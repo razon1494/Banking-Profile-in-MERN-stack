@@ -1,0 +1,21 @@
+.signup{
+
+    background-image: url(https://i.ibb.co/cNVrxgn/pngwing-com-9.png);
+    background-image: url(https://i.ibb.co/BnYsYdk/pngwing-com-6.png);
+
+    background-position: right;
+    background-repeat: no-repeat;
+    /* background-color: white; */
+}
+
+.label{
+    color: darkcyan;
+    /* color: darkolivegreen; */
+color:darkslateblue;
+}
+.input{
+    background-color: rgba(169, 169, 169, 0.493);
+    /* background-color: rgba(72, 160, 133, 0.315); */
+    padding: 20px;
+    /* width: 75%; */
+}

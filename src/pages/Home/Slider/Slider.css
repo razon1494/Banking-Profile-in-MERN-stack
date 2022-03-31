@@ -1,0 +1,64 @@
+.slider{
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.carousel1-title{
+    color:snow;
+    background-color: rgba(0, 0, 0, 0.493);
+
+}
+
+
+
+.carousel2-text{
+    color: ghostwhite;
+    background-color:rgba(20, 18, 18, 0.75);
+    border-radius: 10px;
+}
+
+/* .carousel2-p{
+    color:floralwhite;
+    font-size: 1.4rem;
+} */
+
+
+.carousel3-text{
+    background-color:rgba(15, 20, 26, 0.555);
+    border-radius: 10px;
+    color: honeydew;
+}
+
+/* .carousel3-p{
+    color:rgba(250, 255, 47, 0.685);
+    font-size: 1.4rem;
+} */
+
+/* #exam{
+    color: LightYellow;
+} */
+/* For regular mobile device */
+@media (max-width: 576px) {
+    .carousel1-p{
+    font-size: 1rem;
+}
+.carousel2-p{
+    font-size: 1rem;
+}
+.carousel3-p{
+    font-size: 1rem;
+}
+
+ }
+ /* for extra small mobile device */
+ @media (max-width: 325px) {
+    .carousel1-p{
+    font-size: 0.6rem;
+}
+.carousel2-p{
+    font-size: 0.6rem;
+}
+.carousel3-p{
+    font-size: 0.6rem;
+}
+
+ }

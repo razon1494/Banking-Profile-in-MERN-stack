@@ -1,0 +1,27 @@
+.not-found{
+    background-image: url('https://i.ibb.co/ZxyFDJ9/daniel-jensen-UDle-HDOh-BZ8-unsplash.jpg');
+    min-height: 700px;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: start;
+}
+.go-btn{
+    border-radius: 5px;
+    border: none;
+    background-color: black;
+    color: floralwhite;
+    margin-top: 50px;
+    padding: 20px 50px;
+    font-size: 30px;
+    font-weight: bold;
+}
+.go-btn:hover{
+    background-color: darkred;
+
+}
+
+#notfound{
+    font-weight: bolder;
+    color:skyblue;
+    color:darkolivegreen;
+}

@@ -1,0 +1,53 @@
+.fill{
+    color: goldenrod;
+}
+.dim{
+    color: goldenrod;
+}
+
+.review-head{
+    color: cadetblue;
+    color:darkslategrey;
+    font-weight: 600;
+}
+
+.review{
+    background-image: url(https://i.ibb.co/H7hSsPX/final.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 330px;
+    min-width:300px;
+}
+
+.review-name{
+    color: cadetblue;
+    color:darkslategrey;
+    font-weight: 700;
+}
+
+.user-review{
+ color: gray;
+}
+
+.Rating-h{
+    color: seagreen;
+    color: rebeccapurple;
+}
+.rating-p{
+    color: darkred;
+    font-weight: 700;
+}
+
+
+.rating-select{
+    background-color: goldenrod;
+    background-color: rgba(128, 0, 128, 0.85);
+    background-color: rgba(102, 51, 153, 0.88);
+    /* background-color:indigo; */
+    color: whitesmoke;
+    border-radius: 10px;
+    font-size: 1.3rem;
+}
+.review-details{
+    color: rebeccapurple;
+}

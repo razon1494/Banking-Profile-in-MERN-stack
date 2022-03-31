@@ -1,0 +1,31 @@
+.dbhome{
+
+
+}
+.admin-div h1{
+    color: forestgreen;
+    color: DarkOliveGreen;
+    text-align: center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+.admin-div h2{
+    line-height: 50px;
+    color: DarkKhaki;
+    color: DarkCyan;
+
+}
+.admin-div h3{
+    margin-top: 50px;
+    color: darkred;
+    /* color: yellowgreen; */
+    /* color: tomato; */
+    color: mediumpurple;
+    color: rebeccapurple;
+
+}
+
+.username{
+    color: orangered;
+}

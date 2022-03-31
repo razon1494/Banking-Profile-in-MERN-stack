@@ -1,0 +1,25 @@
+
+.login-full{
+    /* background-color: darkslateblue; */
+    min-height: 700px;
+        background-image: url(https://i.ibb.co/BnYsYdk/pngwing-com-6.png);
+
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
+.toggle{
+    text-decoration: none;
+    color: navy;
+}
+.login-welcome{
+letter-spacing: 5px;
+    background-color: black;
+    /* text-decoration: overline underline; */
+    color: snow;
+    line-height: 50PX;
+    margin-bottom: 0;
+}
+.login-signup{
+
+}

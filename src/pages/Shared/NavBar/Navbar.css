@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+
+.navigation-bar{
+    background-color: rgba(0, 0, 0, 0.719);
+
+}
+.nav-head{
+    color: ghostwhite;
+ /* font: normal 40px 'Cookie', cursive; */
+ font-family: 'Mochiy Pop One', sans-serif;
+ margin: 0;
+}
+.kers{
+    color:BlanchedAlmond;
+}
+.navbar-title{
+   text-decoration: none;
+
+}
+.logout{
+    background-color: transparent;
+    border: transparent;
+    margin-bottom: 20px;
+}
+.nav-items{
+    text-decoration: none;
+    border-radius: 10px;
+}
+.nav-items:hover{
+    background-color:royalblue;
+    background-color:olive;
+}
+.user-name{
+    color: rgba(128, 255, 0, 0.692);
+}

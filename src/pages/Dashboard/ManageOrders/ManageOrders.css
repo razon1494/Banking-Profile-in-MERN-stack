@@ -1,0 +1,28 @@
+.manage-order-page{
+  background-image: url(https://i.ibb.co/cNVrxgn/pngwing-com-9.png);
+  background-color: mintcream;
+  background-color: aliceblue;
+}
+
+.all-order-title{
+    color: darkolivegreen;
+    color: royalblue;
+    color: darkgreen;
+    color: blueviolet;
+    color: purple;
+    color: rebeccapurple;
+    font-weight: 700;
+    word-spacing: 8px;
+    letter-spacing: 2px;
+    /* text-decoration: underline overline; */
+  font-family: 'Roboto', sans-serif;
+}
+.user-info{
+  color: darkolivegreen;
+
+}
+.all-order-p{
+    color: red;
+    font-weight: 500;
+    font-size: 20px;
+}
