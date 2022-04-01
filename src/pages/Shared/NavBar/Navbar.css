@@ -1,18 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
 
 .navigation-bar{
-    background-color: rgba(0, 0, 0, 0.719);
+    background-color: rgba(247, 211, 211, 0.418);
+}
 
-}
-.nav-head{
-    color: ghostwhite;
- /* font: normal 40px 'Cookie', cursive; */
- font-family: 'Mochiy Pop One', sans-serif;
- margin: 0;
-}
-.kers{
-    color:BlanchedAlmond;
-}
+
 .navbar-title{
    text-decoration: none;
 
@@ -24,12 +16,14 @@
 }
 .nav-items{
     text-decoration: none;
+    color: rgb(180, 22, 22);
+   font-weight: 600;
     border-radius: 10px;
 }
 .nav-items:hover{
-    background-color:royalblue;
-    background-color:olive;
+    color: red;
+    background-color:rgba(219, 89, 89, 0.37);
 }
 .user-name{
-    color: rgba(128, 255, 0, 0.692);
+    color: rgba(1, 40, 71, 0.692);
 }

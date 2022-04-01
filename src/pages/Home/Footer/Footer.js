@@ -6,7 +6,7 @@ const Footer = () => {
       <footer class="footer-distributed">
         <div class="footer-left">
           <h3>
-            AB<span> BANK</span>
+            AB<span> Bank</span>
           </h3>
 
           <p class="footer-links">
@@ -72,7 +72,7 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <div className="copyright mt-3 text-center text-light">
+        <div className="copyright mt-3 text-center text-dark">
           <small>
             Copyright &copy; 2022 By Arifur Rahman Razon. All Rights Reserved
           </small>

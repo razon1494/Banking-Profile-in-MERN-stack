@@ -82,7 +82,7 @@ const useFirebase = () => {
           history.replace(destination);
         } else {
           console.log("else");
-          const destination = location.state?.from || "/home";
+          const destination = location.state?.from || "/profile";
           history.replace(destination);
         }
         // Signed in

@@ -6,19 +6,22 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import MakeAdminPage from "./pages/Dashboard/Make Admin/MakeAdminPage";
 import ManageOrdersPage from "./pages/Dashboard/ManageOrders/ManageOrdersPage";
 import ManageProductsPage from "./pages/Dashboard/ManageProducts/ManageProductsPage";
-import Products from "./pages/Explore/Products/Products";
+import Footer from "./pages/Home/Footer/Footer";
 import Home from "./pages/Home/Home/Home";
 import AdminRoute from "./pages/Login/AdminRoute/AdminRoute";
 import Login from "./pages/Login/Login";
 import PrivateRoute from "./pages/Login/PrivateRoute/PrivateRoute";
 import NotFound from "./pages/NotFound/NotFound";
-import Purchase from "./pages/Purchase/Purchase";
+import Profile from "./pages/Profile/Profile";
 import Registration from "./pages/Registration/Registration";
+import Salary from "./pages/Salary/Salary";
+import NavBar from "./pages/Shared/NavBar/NavBar";
 function App() {
   return (
     <div className="App">
       <AuthProvider>
         <BrowserRouter>
+          <NavBar></NavBar>
           <Switch>
             {/* Home ROute for everyone public */}
             <Route exact path="/">
@@ -27,12 +30,12 @@ function App() {
             <PrivateRoute exact path="/home">
               <Home />
             </PrivateRoute>
-            <Route exact path="/products">
-              <Products />
+            <Route exact path="/profile">
+              <Profile />
             </Route>
             {/* Private Route for both user and admin */}
-            <PrivateRoute exact path="/purchase/:id">
-              <Purchase />
+            <PrivateRoute exact path="/salary">
+              <Salary />
             </PrivateRoute>
             <PrivateRoute path="/dashboard">
               <Dashboard />
@@ -61,6 +64,7 @@ function App() {
               <NotFound />
             </Route>
           </Switch>
+          <Footer></Footer>
         </BrowserRouter>
       </AuthProvider>
     </div>

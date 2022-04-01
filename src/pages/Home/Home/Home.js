@@ -1,35 +1,36 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../../context/useAuth";
-import NavBar from "../../Shared/NavBar/NavBar";
-import Footer from "../Footer/Footer";
 import "./Home.css";
 
 const Home = () => {
   //Title Change
   useEffect(() => {
-    document.title = "G.Chairs";
+    document.title = "AB Profile";
   }, []);
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [reviews, setReviews] = useState([]);
   const [reviewloading, setReviewLoading] = useState(true);
   const { user } = useAuth();
+  const [person, setPerson] = useState({});
   // getting users/employees from db
   useEffect(() => {
     fetch("http://localhost:5000/users")
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
+  useEffect(() => {
+    fetch(`http://localhost:5000/getuser/${user.email}`)
+      .then((res) => res.json())
+      .then((data) => setPerson(data.user));
+  }, [user]);
 
   return (
     <div>
       {/* First Part Navbar  */}
-      <NavBar></NavBar>
-      <div className="my-5">
-        <br /> <br />
-      </div>
+      <div className="my-5">{person.email}</div>
+      <div className="my-5">{person.name}</div>
       {/* Last (sixth) Footer Part */}
-      <Footer></Footer>
     </div>
   );
 };
