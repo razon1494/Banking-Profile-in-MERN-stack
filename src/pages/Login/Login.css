@@ -6,6 +6,7 @@
 
     background-position: right;
     background-repeat: no-repeat;
+    background-color: snow;
 }
 
 .toggle{
@@ -14,9 +15,9 @@
 }
 .login-welcome{
 letter-spacing: 5px;
-    background-color: black;
+    background-color: snow;
     /* text-decoration: overline underline; */
-    color: snow;
+    /* color: snow; */
     line-height: 50PX;
     margin-bottom: 0;
 }
