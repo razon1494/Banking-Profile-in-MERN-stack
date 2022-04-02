@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import useAuth from "../../context/useAuth";
 import userimg from "../../images/male.png";
 import userimg2 from "../../images/pngwing.com.png";
@@ -10,54 +10,16 @@ const Profile = () => {
   useEffect(() => {
     document.title = "AB Profile";
   }, []);
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [reviews, setReviews] = useState([]);
-  const [reviewloading, setReviewLoading] = useState(true);
-  const { user } = useAuth();
-  const [person, setPerson] = useState({});
-  // getting users/employees from db
-  useEffect(() => {
-    fetch("http://localhost:5000/users")
-      .then((res) => res.json())
-      .then((data) => setUsers(data));
-  }, []);
-  useEffect(() => {
-    fetch(`http://localhost:5000/getuser/${user.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setPerson(data.user);
-        setLoading(false);
-      });
-  }, [user.email]);
-  /*  if (person !== null) {
-    setLoading(false);
-  } */
-  /* const {
-    name,
-    gender,
-    DOB,
-    branchName,
-    contactNumber,
-    department,
-    educationQualification,
-    email,
-    employeeID,
-    firstName,
-    joiningDate,
-    joiningDesignation,
-    lastName,
-    lastPromotionDate,
-    leave,
-    presentDesignation,
-    presentDistrict,
-    presentThana,
-    professionalQualification,
-    trainingRecieved,
-  } = person; */
-  console.log(person);
-  if (loading === true || person === null) {
-    return <div>Loading................</div>;
+  const { user, person, isLoading, GetPerson } = useAuth();
+  GetPerson(user.email);
+  if (isLoading === true || person === null) {
+    return (
+      <div className="d-flex justify-content-center align-items-center">
+        <div class="spinner-grow text-danger" role="status">
+          <span class="sr-only text-center">Loading...</span>
+        </div>
+      </div>
+    );
   }
   const {
     name,
@@ -83,7 +45,7 @@ const Profile = () => {
   } = person;
   return (
     <div className="container">
-      <h2 className="welcome text-start mb-5">Welcome </h2>
+      <h2 className="welcome text-start mb-5">Welcome {name} </h2>
       <div className="row my-3">
         <div className="col-md-5 basic-intro">
           {gender === "male" ? (

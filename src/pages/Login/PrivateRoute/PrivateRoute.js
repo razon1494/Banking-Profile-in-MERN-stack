@@ -1,19 +1,22 @@
-import React from 'react';
-import { Spinner } from 'react-bootstrap';
-import { Redirect, Route, useLocation } from 'react-router';
-import useAuth from '../../../context/useAuth';
+import { Spinner } from "react-bootstrap";
+import { Redirect, Route } from "react-router";
+import useAuth from "../../../context/useAuth";
 
 // private Route for both admin and user
 
-const PrivateRoute=({children, ...rest}) => {
-  const {user, isLoading}=useAuth();
-
-  if(isLoading) {
-  //private route spinner
-        return <div className='d-flex align-items-center justify-content-center'><Spinner animation="grow" variant="warning" />  </div>
-    }
+const PrivateRoute = ({ children, ...rest }) => {
+  const { user, isLoading } = useAuth();
+  console.log(isLoading, "private Route");
+  if (isLoading) {
+    //private route spinner
     return (
-        <Route
+      <div className="d-flex align-items-center justify-content-center">
+        <Spinner animation="grow" variant="danger" />
+      </div>
+    );
+  }
+  return (
+    <Route
       {...rest}
       render={({ location }) =>
         user.email ? (
@@ -22,13 +25,13 @@ const PrivateRoute=({children, ...rest}) => {
           <Redirect
             to={{
               pathname: "/login",
-              state: { from: location }
+              state: { from: location },
             }}
           />
         )
       }
     />
-    );
+  );
 };
 
 export default PrivateRoute;

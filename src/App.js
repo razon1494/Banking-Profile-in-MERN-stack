@@ -30,9 +30,9 @@ function App() {
             <PrivateRoute exact path="/home">
               <Home />
             </PrivateRoute>
-            <Route exact path="/profile">
+            <PrivateRoute exact path="/profile">
               <Profile />
-            </Route>
+            </PrivateRoute>
             {/* Private Route for both user and admin */}
             <PrivateRoute exact path="/salary">
               <Salary />
