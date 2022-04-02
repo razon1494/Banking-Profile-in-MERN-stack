@@ -6,7 +6,6 @@ import useAuth from "../../../context/useAuth";
 
 const PrivateRoute = ({ children, ...rest }) => {
   const { user, isLoading } = useAuth();
-  console.log(isLoading, "private Route");
   if (isLoading) {
     //private route spinner
     return (

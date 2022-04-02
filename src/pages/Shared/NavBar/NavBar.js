@@ -9,7 +9,7 @@ const NavBar = () => {
   const history = useHistory();
   //destructuring from auth context
   const { user, admin, isUser, logout } = useAuth();
-  console.log(user);
+
   return (
     <div className="">
       <Navbar className="d-block navigation-bar" collapseOnSelect expand="lg">

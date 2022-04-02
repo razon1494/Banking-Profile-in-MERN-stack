@@ -8,6 +8,7 @@ import ManageOrdersPage from "./pages/Dashboard/ManageOrders/ManageOrdersPage";
 import ManageProductsPage from "./pages/Dashboard/ManageProducts/ManageProductsPage";
 import Footer from "./pages/Home/Footer/Footer";
 import Home from "./pages/Home/Home/Home";
+import Leave from "./pages/Leave/Leave";
 import AdminRoute from "./pages/Login/AdminRoute/AdminRoute";
 import Login from "./pages/Login/Login";
 import PrivateRoute from "./pages/Login/PrivateRoute/PrivateRoute";
@@ -36,6 +37,9 @@ function App() {
             {/* Private Route for both user and admin */}
             <PrivateRoute exact path="/salary">
               <Salary />
+            </PrivateRoute>
+            <PrivateRoute exact path="/leave">
+              <Leave />
             </PrivateRoute>
             <PrivateRoute path="/dashboard">
               <Dashboard />
