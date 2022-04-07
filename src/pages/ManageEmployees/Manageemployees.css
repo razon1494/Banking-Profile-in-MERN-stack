@@ -1,0 +1,32 @@
+.toggle {
+    background-color: floralwhite;
+    background-color: aliceblue;
+    padding: 2%;
+}
+
+.activeBranch{
+    border: none;
+    background-color: transparent;
+    color: #ff136f;
+    font-weight: bold;
+    text-decoration: underline;
+    line-height: 50px;
+    text-transform: uppercase;
+
+}
+
+.deactiveBranch{
+    border: none;
+    background-color: transparent;
+    color: gray;
+    font-weight: bold;
+    /* text-decoration: underline; */
+    line-height: 50px;
+    text-transform: uppercase;
+
+}
+.active{
+    color: #ff136f;
+    /* color: #ff4c05; */
+    font-weight: 700;
+}

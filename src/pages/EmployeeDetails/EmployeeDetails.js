@@ -1,27 +1,18 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import useAuth from "../../context/useAuth";
 import userimg from "../../images/male.png";
 import userimg2 from "../../images/pngwing.com.png";
-/* import userimg from "../../images/male.png";
-import userimg2 from "../../images/pngwing.com.png"; */
-import "./Profile.css";
-const Profile = () => {
-  //Title Change
+const EmployeeDetails = () => {
+  const { id } = useParams();
+  const [person, setPerson] = useState({});
   useEffect(() => {
-    document.title = "AB Profile";
+    fetch(`http://localhost:5000/singleusers/${id}`)
+      .then((res) => res.json())
+      .then((data) => setPerson(data));
   }, []);
-  const { person, isLoading } = useAuth();
+  const { isLoading } = useAuth();
   console.log(person);
-
-  if (isLoading === true || person === null) {
-    return (
-      <div className="d-flex justify-content-center align-items-center">
-        <div class="spinner-grow text-danger" role="status">
-          <span class="sr-only text-center">Loading...</span>
-        </div>
-      </div>
-    );
-  }
   const {
     name,
     gender,
@@ -45,9 +36,18 @@ const Profile = () => {
     trainingRecieved,
   } = person;
 
+  if (isLoading === true || person === null) {
+    return (
+      <div className="d-flex justify-content-center align-items-center">
+        <div class="spinner-grow text-danger" role="status">
+          <span class="sr-only text-center">Loading...</span>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="container">
-      <h2 className="welcome text-start mb-5">Welcome {name} </h2>
+      <h2 className="welcome text-start mb-5">{name}'s Profile </h2>
       <div className="row my-3">
         <div className="col-md-5 basic-intro">
           {gender === "female" ? (
@@ -100,4 +100,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default EmployeeDetails;

@@ -7,7 +7,6 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-  updateProfile,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
@@ -26,28 +25,21 @@ const useFirebase = () => {
   const googleProvider = new GoogleAuthProvider();
 
   //register user
-  const registerUser = (email, password, history, name) => {
+  const registerUser = (email, password, history, userData) => {
     setIsLoading(true);
     console.log("From register user", email);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         setAuthError("");
-        const newUser = { email, displayName: name };
+        // const newUser = userData;
         //send name to firebase after creation
-        setUser(newUser);
+        // setUser(newUser);
         //save user to the database
-        saveUser(email, name, "POST");
-        updateProfile(auth.currentUser, {
-          displayName: name,
-        }).then(() => {
-          logout2();
-          Swal.fire(
-            "Congratulations!",
-            "Your Registration is complete, Please sign in with email and password",
-            "success"
-          );
+        // saveUser(email, name, "POST");
+        addUser(userData).then(() => {
+          Swal.fire("Done!", "Registration Completed", "success");
         });
-        history.replace("/login");
+        history.replace("/register");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -70,6 +62,23 @@ const useFirebase = () => {
         setAdmin(data.admin);
       });
   }, [user.email, checkAdmin]);
+  // Get Person
+  const GetPerson = (email) => {
+    useEffect(() => {
+      fetch(`http://localhost:5000/getuser/${email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setPerson(data.user);
+        });
+    }, [email]);
+  };
+  useEffect(() => {
+    fetch(`http://localhost:5000/getuser/${user.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setPerson(data.user);
+      });
+  }, [user]);
   //sign in
   const loginUser = (email, password, location, history) => {
     setIsLoading(true);
@@ -77,9 +86,8 @@ const useFirebase = () => {
       .then((userCredential) => {
         //location set
         //to redirect admin dashboard
-        console.log("from user cr", admin);
         if (admin) {
-          const destination = location.state?.from || "/dashboard";
+          const destination = location.state?.from || "/profile";
           history.replace(destination);
         } else {
           console.log("else");
@@ -126,6 +134,7 @@ const useFirebase = () => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
+        // GetPerson(user.email);
         getIdToken(user).then((idToken) => {});
       } else {
         setUser({});
@@ -134,6 +143,7 @@ const useFirebase = () => {
     });
     return () => unsubscribe;
   }, [auth]);
+
   //admin check for admin route
   useEffect(() => {
     fetch(`http://localhost:5000/users/${user.email}`)
@@ -191,22 +201,107 @@ const useFirebase = () => {
       body: JSON.stringify(user),
     }).then();
   };
-  const GetPerson = (email) => {
-    useEffect(() => {
-      fetch(`http://localhost:5000/getuser/${email}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setPerson(data.user);
-        });
-    }, []);
+  // save registered user
+  const addUser = (userData) => {
+    console.log(userData, "from Add");
+    const mainData = createUserData(userData);
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(mainData),
+    }).then(console.log("Add Success"));
   };
-
   const [users, setUsers] = useState([]);
   useEffect(() => {
     fetch("http://localhost:5000/users")
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
+  const createUserData = (userData) => {
+    const {
+      address,
+      basicSalary,
+      branch,
+      contact,
+      conveyance,
+      department,
+      designation,
+      dob,
+      education,
+      email,
+      fname,
+      gender,
+      houseMaint,
+      houseRent,
+      lname,
+      medical,
+      password,
+      role,
+      userName,
+    } = userData;
+    return {
+      name: userName,
+      firstName: fname,
+      lastName: lname,
+      email: email,
+      employeeID: 1,
+      DOB: dob,
+      presentDistrict: "Dhaka",
+      presentThana: "",
+      address: address,
+      contactNumber: contact,
+      educationQualification: education,
+      professionalQualification: "",
+      trainingRecieved: "",
+      joiningDate: new Date(),
+      joiningDesignation: designation,
+      presentDesignation: designation,
+      lastPromotionDate: "",
+      leave: {
+        clBalance: 10,
+        clAvailed: 0,
+        plBalance: 90,
+        plAvailed: 0,
+        slBalance: 28,
+        slAvailed: 0,
+        leaveWithoutPayAvailed: 0,
+        mlAvailed: 0,
+        ctsAvailed: 0,
+      },
+      branches: [
+        {
+          branchName: "Uttara",
+          startDate: new Date(),
+          endDate: "",
+          positions: ["Trainee Officer"],
+        },
+      ],
+      salary: {
+        grandSalary: {
+          basicPay: basicSalary,
+          houseRent: houseRent,
+          conveyance: conveyance,
+          Medical: medical,
+          houseMaintanence: houseMaint,
+        },
+        promotions: [],
+        Branches: [
+          {
+            branchName: branch,
+            startDate: new Date(),
+            endDate: "",
+            positions: [designation],
+          },
+        ],
+      },
+      department: department,
+      branchName: branch,
+      role: role,
+      gender: gender,
+    };
+  };
   return {
     user,
     users,
@@ -215,6 +310,7 @@ const useFirebase = () => {
     isLoading,
     isUser,
     GetPerson,
+    addUser,
     signInWithGoogle,
     registerUser,
     loginUser,

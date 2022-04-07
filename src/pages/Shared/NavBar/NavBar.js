@@ -34,7 +34,7 @@ const NavBar = () => {
                   <NavLink className="nav-items fs-6 px-3  py-2 " to="/leave">
                     Leave
                   </NavLink>
-                  <NavLink className="nav-items fs-6 px-3  py-2 " to="/leave">
+                  <NavLink className="nav-items fs-6 px-3  py-2 " to="/status">
                     Status
                   </NavLink>
                 </>
@@ -43,16 +43,13 @@ const NavBar = () => {
               {admin && (
                 <NavLink
                   className="nav-items fs-6 px-3  py-2 "
-                  to="/manageorders"
+                  to="/manageeployees"
                 >
                   Manage Employees
                 </NavLink>
               )}
               {admin && (
-                <NavLink
-                  className="nav-items fs-6 px-3  py-2 "
-                  to="/addproducts"
-                >
+                <NavLink className="nav-items fs-6 px-3  py-2 " to="/register">
                   Add Employee
                 </NavLink>
               )}
