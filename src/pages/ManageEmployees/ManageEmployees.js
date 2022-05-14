@@ -4,7 +4,7 @@ import AllEmployees from "./AllEmployees";
 import "./Manageemployees.css";
 import MyBranch from "./MyBranch";
 const ManageEmployees = () => {
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(false);
   const { person } = useAuth();
 
   return (

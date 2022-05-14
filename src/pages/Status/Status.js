@@ -39,7 +39,7 @@ const Status = (isLoading) => {
         </tbody>
       </table>
       <br /> <br />
-      <h1 className="text-center">Promotion Status</h1>
+      <h1 className="text-center">Branch Status</h1>
       <table class="table table-hover table-light table-responsive-sm">
         <thead>
           <tr>

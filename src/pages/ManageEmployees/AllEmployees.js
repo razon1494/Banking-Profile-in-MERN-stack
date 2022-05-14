@@ -18,6 +18,7 @@ const AllEmployees = () => {
               <th scope="col">Designation</th>
               <th scope="col">Branch</th>
               <th scope="col">View/Edit</th>
+              <th scope="col">Send Text</th>
             </tr>
           </thead>
           <tbody>
@@ -32,6 +33,14 @@ const AllEmployees = () => {
                 <td className="fs-4 fw-bold user-info">
                   <Link to={`employee/${user._id}`} className="btn btn-success">
                     Details/Edit
+                  </Link>
+                </td>
+                <td className="fs-4 fw-bold user-info text-center">
+                  <Link
+                    to={`sendmessage/${user._id}`}
+                    className="btn btn-outline-warning"
+                  >
+                    <i class="fa fa-envelope text-info"></i>
                   </Link>
                 </td>
               </tr>

@@ -9,8 +9,8 @@ import "./Leave.css";
 import LeaveApplication from "./LeaveApplication";
 const Leave = () => {
   const { user, GetPerson, person } = useAuth();
-  GetPerson(user.email);
-  if (!person.email) {
+  // GetPerson(user.email);
+  if (!person?.email) {
     return (
       <div className="d-flex align-items-center justify-content-center">
         <Spinner animation="grow" variant="danger" />

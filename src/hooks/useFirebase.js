@@ -4,6 +4,7 @@ import {
   getIdToken,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendSignInLinkToEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -21,25 +22,71 @@ const useFirebase = () => {
   const [admin, setAdmin] = useState(false);
   const [checkAdmin, setCheckAdmin] = useState(false);
   const [person, setPerson] = useState({});
+  const [adminEmail, setAdminEmail] = useState("");
+  const [adminPassword, setAdminPassword] = useState("");
 
   const googleProvider = new GoogleAuthProvider();
+  // email link authentication
+  const actionCodeSettings = {
+    // URL you want to redirect back to. The domain (www.example.com) for this
+    // URL must be in the authorized domains list in the Firebase Console.
+    url: "http://localhost:3000/",
+    // This must be true.
+    handleCodeInApp: true,
+
+    dynamicLinkDomain: "http://localhost:3000/",
+  };
+  const emailLinkUser = (email, history, userData) => {
+    console.log("dhuksi");
+    setIsLoading(true);
+    sendSignInLinkToEmail(auth, email, actionCodeSettings)
+      .then(() => {
+        console.log("parsi");
+        window.localStorage.setItem("emailForSignIn", email);
+        addUser(userData).then(() => {
+          Swal.fire("Done!", "Check Your Email", "success");
+        });
+        history.replace("/register");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log("pari nai", errorMessage, "r o ase", errorCode);
+        // ...
+      });
+  };
 
   //register user
-  const registerUser = (email, password, history, userData) => {
+  const addNewUser = (email, password, history, userData) => {
+    const admEmail = adminEmail;
+    const admPass = adminPassword;
+    registerUser(email, password, history, userData, admEmail, admPass);
+  };
+  const registerUser = (
+    email,
+    password,
+    history,
+    userData,
+    admEmail,
+    admPass
+  ) => {
     setIsLoading(true);
+
     console.log("From register user", email);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        setAuthError("");
-        // const newUser = userData;
-        //send name to firebase after creation
-        // setUser(newUser);
-        //save user to the database
-        // saveUser(email, name, "POST");
-        addUser(userData).then(() => {
-          Swal.fire("Done!", "Registration Completed", "success");
-        });
-        history.replace("/register");
+        addUser(userData);
+        if (adminEmail) {
+          logout2();
+          signInWithEmailAndPassword(auth, admEmail, admPass);
+          history.replace("/profile");
+          setIsLoading(false);
+        }
+
+        history.replace("/profile");
+      })
+      .then(() => {
+        Swal.fire("Done!", "Registration Completed", "success");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -86,6 +133,8 @@ const useFirebase = () => {
       .then((userCredential) => {
         //location set
         //to redirect admin dashboard
+        setAdminEmail(email);
+        setAdminPassword(password);
         if (admin) {
           const destination = location.state?.from || "/profile";
           history.replace(destination);
@@ -218,7 +267,7 @@ const useFirebase = () => {
     fetch("http://localhost:5000/users")
       .then((res) => res.json())
       .then((data) => setUsers(data));
-  }, []);
+  }, [isLoading]);
   const createUserData = (userData) => {
     const {
       address,
@@ -255,7 +304,7 @@ const useFirebase = () => {
       educationQualification: education,
       professionalQualification: "",
       trainingRecieved: "",
-      joiningDate: new Date(),
+      joiningDate: dateToString(new Date()),
       joiningDesignation: designation,
       presentDesignation: designation,
       lastPromotionDate: "",
@@ -302,12 +351,38 @@ const useFirebase = () => {
       gender: gender,
     };
   };
+  const dateToString = (date) => {
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    let month;
+    let monthNumber;
+    let today = date;
+    let dateString = today.toString();
+    monthNumber = today.getMonth();
+    month = monthNames[monthNumber];
+    const returnDate =
+      month + " " + dateString.slice(8, 10) + ", " + today.getFullYear();
+    return returnDate;
+  };
   return {
     user,
     users,
     person,
     admin,
     isLoading,
+    setIsLoading,
     isUser,
     GetPerson,
     addUser,
@@ -317,6 +392,9 @@ const useFirebase = () => {
     authError,
     checkAdmin,
     setCheckAdmin,
+    emailLinkUser,
+    dateToString,
+    addNewUser,
     logout,
   };
 };

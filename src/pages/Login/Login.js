@@ -46,7 +46,9 @@ const Login = () => {
     loginUser(loginData.email, loginData.password, location, history);
     e.preventDefault();
   };
-
+  if (user.email) {
+    history.push("/profile");
+  }
   return (
     <div>
       <div className="login-full">

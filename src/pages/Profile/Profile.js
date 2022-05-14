@@ -2,17 +2,16 @@ import { useEffect } from "react";
 import useAuth from "../../context/useAuth";
 import userimg from "../../images/male.png";
 import userimg2 from "../../images/pngwing.com.png";
-/* import userimg from "../../images/male.png";
-import userimg2 from "../../images/pngwing.com.png"; */
 import "./Profile.css";
 const Profile = () => {
   //Title Change
   useEffect(() => {
     document.title = "AB Profile";
   }, []);
-  const { person, isLoading } = useAuth();
-  console.log(person);
+  const { person, isLoading, user, GetPerson } = useAuth();
 
+  GetPerson(user.email);
+  console.log(person);
   if (isLoading === true || person === null) {
     return (
       <div className="d-flex justify-content-center align-items-center">

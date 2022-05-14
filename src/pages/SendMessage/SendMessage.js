@@ -1,0 +1,70 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import useAuth from "../../context/useAuth";
+import "./SendMessage.css";
+
+const SendMessage = () => {
+  const { id } = useParams();
+  const [person, setPerson] = useState({});
+  const { isLoading, setIsLoading } = useAuth();
+  const [control, setConrol] = useState(false);
+  useEffect(() => {
+    fetch(`http://localhost:5000/singleusers/${id}`)
+      .then((res) => res.json())
+      .then((data) => setPerson(data));
+  }, [isLoading]);
+
+  console.log(person);
+  const {
+    name,
+    gender,
+    DOB,
+    branchName,
+    contactNumber,
+    department,
+    educationQualification,
+    email,
+    employeeID,
+    firstName,
+    joiningDate,
+    joiningDesignation,
+    lastName,
+    lastPromotionDate,
+    leave,
+    presentDesignation,
+    presentDistrict,
+    presentThana,
+    professionalQualification,
+    trainingRecieved,
+  } = person;
+
+  if (isLoading === true || person === null) {
+    return (
+      <div className="d-flex justify-content-center align-items-center">
+        <div class="spinner-grow text-danger" role="status">
+          <span class="sr-only text-center">Loading...</span>
+        </div>
+      </div>
+    );
+  }
+  const handleOnBlur = (e) => {};
+  return (
+    <div className="container message-container">
+      <h1>Send Text to: {name}</h1>
+      <input
+        onBlur={handleOnBlur}
+        type="text"
+        className="input  w-75 py-4 mb-4 form-control bg-light"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Enter Your Last Name"
+        name="lname"
+      />
+      <button type="submit" className="button-84 px-5 mb-3">
+        Submit
+      </button>
+    </div>
+  );
+};
+
+export default SendMessage;

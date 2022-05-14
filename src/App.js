@@ -4,7 +4,6 @@ import AuthProvider from "./context/AuthProvider";
 import AddProductsPage from "./pages/Dashboard/AddProduct/AddProductsPage";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import MakeAdminPage from "./pages/Dashboard/Make Admin/MakeAdminPage";
-import ManageOrdersPage from "./pages/Dashboard/ManageOrders/ManageOrdersPage";
 import ManageProductsPage from "./pages/Dashboard/ManageProducts/ManageProductsPage";
 import EmployeeDetails from "./pages/EmployeeDetails/EmployeeDetails";
 import Footer from "./pages/Home/Footer/Footer";
@@ -18,6 +17,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import Profile from "./pages/Profile/Profile";
 import Registration from "./pages/Registration/Registration";
 import Salary from "./pages/Salary/Salary";
+import SendMessage from "./pages/SendMessage/SendMessage";
 import NavBar from "./pages/Shared/NavBar/NavBar";
 import Status from "./pages/Status/Status";
 
@@ -52,8 +52,8 @@ function App() {
               <Dashboard />
             </PrivateRoute>
             {/* Admin Route Only for admin */}
-            <AdminRoute exact path="/manageorders">
-              <ManageOrdersPage></ManageOrdersPage>
+            <AdminRoute exact path="/sendmessage/:id">
+              <SendMessage></SendMessage>
             </AdminRoute>
             <AdminRoute exact path="/manageeployees">
               <ManageEmployees></ManageEmployees>

@@ -58,14 +58,6 @@ const NavBar = () => {
                   Make Admin
                 </NavLink>
               )}
-              {admin && (
-                <NavLink
-                  className="nav-items fs-6 px-3  py-2 "
-                  to="/manageproducts"
-                >
-                  Send Message
-                </NavLink>
-              )}
 
               {/* {user?.email && (
                 <NavLink className="nav-items fs-6 px-3  py-2 " to="/dashboard">

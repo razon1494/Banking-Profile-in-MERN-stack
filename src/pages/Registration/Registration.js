@@ -14,7 +14,15 @@ const Registration = () => {
   const location = useLocation();
   const history = useHistory();
   // const redirect_uri = location.state?.from.pathname || "/register";
-  const { user, registerUser, isLoading, authError, addUser } = useAuth();
+  const {
+    user,
+    registerUser,
+    emailLinkUser,
+    isLoading,
+    authError,
+    addUser,
+    addNewUser,
+  } = useAuth();
   const [userData, setUserData] = useState({});
   const [startDate, setStartDate] = useState("2015-03-25");
   console.log(startDate);
@@ -34,10 +42,10 @@ const Registration = () => {
     const userName = userData.fname + " " + userData.lname;
     userData["userName"] = userName;
 
-    registerUser(userData.email, userData.password, history, userData);
+    addNewUser(userData.email, userData.password, history, userData);
+    // emailLinkUser(userData.email, history, userData);
     console.log("with user name", userData);
-
-    addUser(userData);
+    // addUser(userData);
     e.preventDefault();
   };
   //function to save the given data
@@ -215,9 +223,9 @@ const Registration = () => {
               className="input  w-75  form-control"
               name="role"
             >
-              <option value="Male">User</option>
-              <option value="Male">Branch Manager</option>
-              <option value="Male">Admin</option>
+              <option value="user">User</option>
+              <option value="bm">Branch Manager</option>
+              <option value="admin">Admin</option>
             </select>
           </div>
           <div className="form-group my-4">
