@@ -1,7 +1,9 @@
-import React from "react";
-
 const a = () => {
-  return <div></div>;
+  return (
+    <div>
+      <h1>uifhgds</h1>
+    </div>
+  );
 };
 
 export default a;
