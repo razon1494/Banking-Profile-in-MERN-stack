@@ -1,3 +1,4 @@
+import emailjs from "emailjs-com";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useAuth from "../../context/useAuth";
@@ -6,8 +7,9 @@ import "./SendMessage.css";
 const SendMessage = () => {
   const { id } = useParams();
   const [person, setPerson] = useState({});
-  const { isLoading, setIsLoading } = useAuth();
+  const { isLoading, setIsLoading, user } = useAuth();
   const [control, setConrol] = useState(false);
+  const [message, setMessage] = useState("");
   useEffect(() => {
     fetch(`http://localhost:5000/singleusers/${id}`)
       .then((res) => res.json())
@@ -47,7 +49,26 @@ const SendMessage = () => {
       </div>
     );
   }
-  const handleOnBlur = (e) => {};
+
+  const handleOnBlur = (e) => {
+    setMessage(e.target.value);
+  };
+  const hanldeSubmitClick = (e) => {
+    console.log(message);
+    emailjs.send(
+      "service_fouyh05",
+      "template_frgvbsa",
+      {
+        to_name: name,
+        from_name: user.displayName,
+        message: message,
+        to_email: email,
+      },
+      "i8CmPgCPN53jc6tc9"
+    );
+
+    document.getElementById("message").value = "";
+  };
   return (
     <div className="container message-container">
       <h1>Send Text to: {name}</h1>
@@ -55,12 +76,15 @@ const SendMessage = () => {
         onBlur={handleOnBlur}
         type="text"
         className="input  w-75 py-4 mb-4 form-control bg-light"
-        id="exampleInputEmail1"
-        aria-describedby="emailHelp"
-        placeholder="Enter Your Last Name"
+        id="message"
+        placeholder="Enter Your Message"
         name="lname"
       />
-      <button type="submit" className="button-84 px-5 mb-3">
+      <button
+        type="submit"
+        onClick={hanldeSubmitClick}
+        className="button-84 px-5 mb-3"
+      >
         Submit
       </button>
     </div>
