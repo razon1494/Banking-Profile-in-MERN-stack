@@ -1,13 +1,7 @@
 const a = () => {
   return (
     <div>
-      <ul>
-        <li>
-          <li>dfghjkiuoui</li>
-          <li>dfghjkiuoui</li>
-          <li>rdytujyhkjhk</li>
-        </li>
-      </ul>
+      <i class="fa fa-h-square" aria-hidden="true"></i>
     </div>
   );
 };
