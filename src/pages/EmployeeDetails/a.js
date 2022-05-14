@@ -1,33 +1,10 @@
 const a = () => {
   return (
     <div>
-      <h3>
-        <hi></hi>
-      </h3>
-      <h3>
-        <hi></hi>
-      </h3>
-      <h3>
-        <hi></hi>
-      </h3>
-      <h3>
-        <hi></hi>
-      </h3>
-      <h3>
-        <hi></hi>
-      </h3>
-      <h3>
-        <hi></hi>
-      </h3>
-      <h3>
-        <hi></hi>
-      </h3>
-      <h3>
-        <hi></hi>
-      </h3>
-      <h3>
-        <hi></hi>
-      </h3>
+      <h1></h1>
+      <h1>"ads"</h1>
+      <h1>"ads"</h1>
+      <h1>"ads"</h1>
     </div>
   );
 };
