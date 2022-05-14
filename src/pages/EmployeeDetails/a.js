@@ -1,9 +1,7 @@
 const a = () => {
   return (
     <div>
-      <h1>fdfg</h1>
-      <h1>fdfg</h1>
-      <h1>fdfg</h1>
+      <p></p>
     </div>
   );
 };
