@@ -1,7 +1,7 @@
 const a = () => {
   return (
     <div>
-      <b>jdgfhhj</b>
+      <script></script>
     </div>
   );
 };
