@@ -1,7 +1,13 @@
 const a = () => {
   return (
     <div>
-      <script></script>
+      <ul>
+        <li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </li>
+      </ul>
     </div>
   );
 };
