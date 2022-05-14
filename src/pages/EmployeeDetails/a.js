@@ -1,7 +1,7 @@
 const a = () => {
   return (
     <div>
-      <p>gvfygj</p>
+      <textarea name="" id="" cols="30" rows="10"></textarea>
     </div>
   );
 };
