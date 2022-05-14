@@ -53,8 +53,9 @@ const SendMessage = () => {
   const handleOnBlur = (e) => {
     setMessage(e.target.value);
   };
+
   const hanldeSubmitClick = (e) => {
-    console.log(message);
+    console.log(process.env);
     emailjs.send(
       "service_fouyh05",
       "template_frgvbsa",
@@ -64,7 +65,7 @@ const SendMessage = () => {
         message: message,
         to_email: email,
       },
-      "i8CmPgCPN53jc6tc9"
+      process.env.REACT_APP_EMAIL_JS_KEY
     );
 
     document.getElementById("message").value = "";
