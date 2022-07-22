@@ -1,16 +1,5 @@
 const a = () => {
-  return (
-    <div>
-      <h3>3</h3>
-      <h3></h3>
-      <h3></h3>
-      <h3></h3>
-      <h3></h3>
-      <h3></h3>
-      <h3></h3>
-      <h3></h3>
-    </div>
-  );
+  return <div></div>;
 };
 
 export default a;
