@@ -90,7 +90,6 @@ const SendMessage = () => {
       </button>
       <h1></h1>
       <h1></h1>
-      <h1></h1>
     </div>
   );
 };
