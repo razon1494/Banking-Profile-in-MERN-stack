@@ -88,7 +88,7 @@ const SendMessage = () => {
       >
         Submit
       </button>
-      <h1></h1>
+
       <h1></h1>
       <h1></h1>
       <h1></h1>
